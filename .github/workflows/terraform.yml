@@ -38,8 +38,8 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: us-west-1
 
-      - name: Terraform Apply
-        run: terraform apply -auto-approve  
+      # - name: Terraform Apply
+      #   run: terraform apply -auto-approve  
 
       - name: Log in to Amazon ECR
         run: |

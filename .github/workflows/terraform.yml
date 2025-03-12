@@ -27,6 +27,12 @@ jobs:
           aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }} 
           aws configure set aws_region us-west-1
 
+      - name: Show AWS environment variables
+        run: |
+          echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}"
+          echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}"
+          echo "AWS_REGION=us-west-1"
+
       - name: Initialise project and view terraform plan
         run: |
           terraform init 

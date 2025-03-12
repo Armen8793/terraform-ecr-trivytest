@@ -4,5 +4,7 @@ variable "repo_names" {
 }
 
 variable "region" {
-  default = us-west-1
+  description = "AWS region"
+  type        = string
+  default     = "us-west-1" 
 }

@@ -62,3 +62,27 @@ jobs:
           docker build -t bdg-repoarmentest-3 -f nginx/Dockerfile.dev nginx/
           docker tag bdg-repoarmentest-3:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-west-1.amazonaws.com/bdg-repoarmentest-3:latest
           docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-west-1.amazonaws.com/bdg-repoarmentest-3:latest
+
+      - name: Scan Server Image with Trivy
+        uses: aquasecurity/trivy-action@v0.2.0
+        with:
+          image-ref: bdg-repoarmentest-1:latest
+          format: 'table'
+          ignore-unfixed: true
+        continue-on-error: false 
+
+      - name: Scan Client Image with Trivy
+        uses: aquasecurity/trivy-action@v0.2.0
+        with:
+          image-ref: bdg-repoarmentest-2:latest
+          format: 'table'
+          ignore-unfixed: true
+        continue-on-error: false 
+
+      - name: Scan Nginx Image with Trivy
+        uses: aquasecurity/trivy-action@v0.2.0
+        with:
+          image-ref: bdg-repoarmentest-3:latest
+          format: 'table'
+          ignore-unfixed: true
+        continue-on-error: false

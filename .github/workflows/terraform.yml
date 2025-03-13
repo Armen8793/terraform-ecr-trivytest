@@ -59,6 +59,6 @@ jobs:
 
       - name: Build Docker image for nginx
         run: |
-          docker build -t bdg-repoarmentest-3 -f nginx/Dockerfile.dev /nginx
+          docker build -t bdg-repoarmentest-3 -f nginx/Dockerfile.dev nginx/
           docker tag bdg-repoarmentest-3:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-west-1.amazonaws.com/bdg-repoarmentest-3:latest
           docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-west-1.amazonaws.com/bdg-repoarmentest-3:latest

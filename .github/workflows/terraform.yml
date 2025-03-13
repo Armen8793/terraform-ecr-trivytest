@@ -28,7 +28,6 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-west-1
 
-
       - name: Initialise project and view terraform plan
         run: |
           terraform init 
@@ -48,21 +47,18 @@ jobs:
 
       - name: Build Docker image for server
         run: |
-          docker build -t bdg-repoarmentest-1 -f server/Dockerfile.dev
+          docker build -t bdg-repoarmentest-1 -f server/Dockerfile.dev .
           docker tag bdg-repoarmentest-1:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-west-1.amazonaws.com/bdg-repoarmentest-1:latest
           docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-west-1.amazonaws.com/bdg-repoarmentest-1:latest
-        
 
-     
       - name: Build Docker image for client
         run: |
-          docker build -t bdg-repoarmentest-2 -f client/Dockerfile.dev 
+          docker build -t bdg-repoarmentest-2 -f client/Dockerfile.dev .
           docker tag bdg-repoarmentest-2:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-west-1.amazonaws.com/bdg-repoarmentest-2:latest
           docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-west-1.amazonaws.com/bdg-repoarmentest-2:latest
 
-      
       - name: Build Docker image for nginx
         run: |
-          docker build -t bdg-repoarmentest-3 -f nginx/Dockerfile.dev 
-          docker tag bdg-repoarmentest-3:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-west-1.amazonaws.com/bdg-repoarmentest-3:lates
-          docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-west-1.amazonaws.com/bdg-repoarmentest-3:lates   
+          docker build -t bdg-repoarmentest-3 -f nginx/Dockerfile.dev .
+          docker tag bdg-repoarmentest-3:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-west-1.amazonaws.com/bdg-repoarmentest-3:latest
+          docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-west-1.amazonaws.com/bdg-repoarmentest-3:latest

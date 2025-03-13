@@ -64,7 +64,7 @@ jobs:
           docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-west-1.amazonaws.com/bdg-repoarmentest-3:latest
 
       - name: Scan Server Image with Trivy
-        uses: aquasecurity/trivy-action@v0.2.0
+        uses: aquasecurity/trivy-action@0.28.0
         with:
           image-ref: bdg-repoarmentest-1:latest
           format: 'table'
@@ -72,7 +72,7 @@ jobs:
         continue-on-error: false 
 
       - name: Scan Client Image with Trivy
-        uses: aquasecurity/trivy-action@v0.2.0
+        uses: aquasecurity/trivy-action@0.28.0
         with:
           image-ref: bdg-repoarmentest-2:latest
           format: 'table'
@@ -80,7 +80,7 @@ jobs:
         continue-on-error: false 
 
       - name: Scan Nginx Image with Trivy
-        uses: aquasecurity/trivy-action@v0.2.0
+        uses: aquasecurity/trivy-action@0.28.0
         with:
           image-ref: bdg-repoarmentest-3:latest
           format: 'table'

@@ -30,16 +30,18 @@ jobs:
 
       - name: Initialise project and view terraform plan
         run: |
-          terraform init 
-          terraform plan  
+          terraform init  
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: us-west-1
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve 
-        continue-on-error: true
+        run: terraform plan
+
+      # - name: Terraform Apply
+      #   run: terraform apply -auto-approve 
+      #   continue-on-error: true
 
       - name: Log in to Amazon ECR
         run: |

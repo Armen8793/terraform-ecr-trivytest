@@ -36,7 +36,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: us-west-1
 
-      - name: Terraform Apply
+      - name: Terraform Plan
         run: terraform plan
 
       # - name: Terraform Apply

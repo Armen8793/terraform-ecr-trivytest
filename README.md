@@ -1,3 +1,5 @@
+# DISCOMMENT TERRAFORM APPLY IN CI/CD PIPELINE TO DEPLOY INFRASTRUCTURE
+
 # terraform.tfvars file is not in .gitignore although it must be there, because there is no secret and I wanted to put it visible!!!
 
 # AFTER TERRAFORM APPLY FOR EKS CLUSTER
